@@ -1,8 +1,8 @@
 var net = require('net');
 
 var debug = false;
-var cmdStart = '!';
-var cmdStop = '.';
+var cmdStart = '(';
+var cmdStop = ')';
 
 function PBWidget(options) {
     port = typeof options.port !== 'undefined' ? options.port : 1337; // Default 1337

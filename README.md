@@ -15,11 +15,9 @@ npm install node-pbwidget
 ```
 
 ## Widget Setup
-Make sure your PB project is running.
+Make sure your PB project and PB Widget are running. Connect the widget to the PB project.
 
-Run the widget in /widget/PB Widget Server/. Make sure it is connected to your PB Manager.
-
-The default listening port is 1337. You can change that in the Connection Manager but be sure to reset the connection ID to 1.
+In the Widget menu select Tools - Remoting. Set the TCP Server port to 1337 (or whatever port you prefer) and Enable. This will listen for commands coming from the Nod.js server.
 
 ## Usage
 
@@ -28,7 +26,7 @@ var PBWidget = require('node-pbwidget');
 
 var options = {
     ip: // required
-    port: // Optional. Default is 1337
+    port: // Default is 1337 if not specified
 };
 
 pbWidgetServer = new PBWidget(options);
@@ -52,7 +50,7 @@ var composedCMD1 = cmd1+','+device+','+param+','+paramValue; //'DeviceSetParam,1
 var cmd2 = 'ResetParam';
 var composedCMD2 = cmd2+','+device+','+param; //'ResetParam,1,1,X Pos'
 
-pbWidgetServer = new PBWidget( {ip:'192.168.0.4'} );
+pbWidgetServer = new PBWidget( {ip:'192.168.0.4', port: 1338} );
 
 pbWidgetServer.send(composedCMD1, function(){
     pbWidgetServer.send(composedCMD2, function() {
